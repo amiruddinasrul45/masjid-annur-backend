@@ -4,13 +4,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({ 
-  origin: [
-    'http://localhost:5173', 
-    'http://localhost:3000',
-    'https://masjid-annur-frontend-i4yhqx8c2-asrul-s-projects12.vercel.app'
-  ] 
-}));
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/donasi',        require('./routes/donasi'));
