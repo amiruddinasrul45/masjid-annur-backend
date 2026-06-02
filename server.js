@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
         </div>
         <div class="footer">© 2026 Masjid An-Nur • Powered by Express.js</div>
       </div>
-    </body>
+    </body>app.use('/api/donors', require('./routes/donors'));
     </html>
   `);
 });
