@@ -4,9 +4,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({
-  origin: '*'
-}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 app.use('/api/donasi',        require('./routes/donasi'));
@@ -16,7 +14,8 @@ app.use('/api/disbursements', require('./routes/disbursements'));
 app.use('/api/progress',      require('./routes/progressReports'));
 app.use('/api/gallery',       require('./routes/gallery'));
 app.use('/api/notifications', require('./routes/notifications'));
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth',          require('./routes/auth'));
+app.use('/api/rab',           require('./routes/rab'));
 
 app.get('/', (req, res) => {
   res.send(`
@@ -59,6 +58,7 @@ app.get('/', (req, res) => {
           <div class="endpoint"><span class="method">GET</span> /api/gallery</div>
           <div class="endpoint"><span class="method">GET</span> /api/notifications</div>
           <div class="endpoint"><span class="method post">POST</span> /api/auth/login</div>
+          <div class="endpoint"><span class="method">GET</span> /api/rab</div>
         </div>
         <div class="footer">© 2026 Masjid An-Nur • Powered by Express.js</div>
       </div>
@@ -66,5 +66,6 @@ app.get('/', (req, res) => {
     </html>
   `);
 });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server jalan di http://localhost:${PORT}`));
