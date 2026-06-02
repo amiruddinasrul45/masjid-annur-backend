@@ -16,6 +16,7 @@ app.use('/api/gallery',       require('./routes/gallery'));
 app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/auth',          require('./routes/auth'));
 app.use('/api/rab',           require('./routes/rab'));
+app.use('/api/donors',        require('./routes/donors'));
 
 app.get('/', (req, res) => {
   res.send(`
@@ -59,10 +60,11 @@ app.get('/', (req, res) => {
           <div class="endpoint"><span class="method">GET</span> /api/notifications</div>
           <div class="endpoint"><span class="method post">POST</span> /api/auth/login</div>
           <div class="endpoint"><span class="method">GET</span> /api/rab</div>
+          <div class="endpoint"><span class="method">GET</span> /api/donors</div>
         </div>
         <div class="footer">© 2026 Masjid An-Nur • Powered by Express.js</div>
       </div>
-    </body>app.use('/api/donors', require('./routes/donors'));
+    </body>
     </html>
   `);
 });
