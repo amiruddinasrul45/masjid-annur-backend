@@ -28,12 +28,19 @@ router.post('/', requireAuth, async (req, res) => {
 
 // PATCH update galeri (butuh login)
 router.patch('/:id', requireAuth, async (req, res) => {
-  const { title, description, imageUrl } = req.body;
+  const { title, description, imageUrl, date } = req.body;
   try {
-    await db.query(
-      'UPDATE gallery SET title=?, description=?, imageUrl=? WHERE id=?',
-      [title, description, imageUrl, req.params.id]
-    );
+    if (date) {
+      await db.query(
+        'UPDATE gallery SET title=?, description=?, imageUrl=?, date=? WHERE id=?',
+        [title, description, imageUrl, date, req.params.id]
+      );
+    } else {
+      await db.query(
+        'UPDATE gallery SET title=?, description=?, imageUrl=? WHERE id=?',
+        [title, description, imageUrl, req.params.id]
+      );
+    }
     res.json({ message: 'Galeri diupdate' });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
