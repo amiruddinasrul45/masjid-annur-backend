@@ -26,6 +26,18 @@ router.post('/', requireAuth, async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// PATCH update galeri (butuh login)
+router.patch('/:id', requireAuth, async (req, res) => {
+  const { title, description, imageUrl } = req.body;
+  try {
+    await db.query(
+      'UPDATE gallery SET title=?, description=?, imageUrl=? WHERE id=?',
+      [title, description, imageUrl, req.params.id]
+    );
+    res.json({ message: 'Galeri diupdate' });
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
 // DELETE galeri (butuh login)
 router.delete('/:id', requireAuth, async (req, res) => {
   try {
