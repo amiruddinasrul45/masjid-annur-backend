@@ -48,8 +48,8 @@ router.post('/', async (req, res) => {
       }
     } else {
       await db.query(
-        `INSERT INTO donors (id, name, phone, type, status, totalContribution, avatar) VALUES (?, ?, ?, ?, 'inactive', ?, '')`,
-        [donorId, nama, phone || null, donationType, jumlah]
+        `INSERT INTO donors (id, name, phone, type, status, totalContribution, avatar) VALUES (?, ?, ?, ?, 'inactive', 0, '')`,
+        [donorId, nama, phone || null, donationType]
       );
     }
 
