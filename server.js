@@ -17,6 +17,7 @@ app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/auth',          require('./routes/auth'));
 app.use('/api/rab',           require('./routes/rab'));
 app.use('/api/donors',        require('./routes/donors'));
+app.use('/api/panitia',       require('./routes/panitia'));
 
 app.get('/', (req, res) => {
   res.send(`
